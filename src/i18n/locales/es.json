@@ -1,0 +1,27 @@
+{
+  "main.layout.title": "Alberto Galeano",
+  "hero.title": "Alberto Galeano",
+  "hero.subtitle": "Ingeniero de Software",
+  "hero.description": "Especializado en el desarrollo backend con Java y Spring Boot, con experiencia en otras áreas complementarias como frontend, bases de datos y DevOps.",
+  "hero.img.alt": "Foto de Alberto Galeano",
+  
+  "theme.light": "Claro",
+  "theme.dark": "Oscuro",
+  "theme.system": "Auto",
+  "theme.toggle": "Cambiar de tema",
+  "theme.lightMode": "Modo claro",
+  "theme.darkMode": "Modo oscuro",
+  "theme.autoMode": "Modo automático",
+  
+  "nav.home": "Inicio",
+  "nav.experience": "Experiencia",
+  "nav.projects": "Proyectos",
+  "nav.contact": "Contacto",
+  
+  "experience.title": "Experiencia",
+  "experience.present": "Presente",
+  "experience.years": "años",
+  "experience.year": "año",
+  "experience.months": "meses",
+  "experience.month": "mes"
+}

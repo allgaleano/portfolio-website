@@ -1,0 +1,86 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils"
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pages = [
+  {
+    name: t('nav.home'),
+    url: ""
+  },
+  {
+    name: t('nav.experience'),
+    url: ""
+  },
+  {
+    name: t('nav.projects'),
+    url: ""
+  },
+  {
+    name: t('nav.contact'),
+    url: ""
+  }
+]
+
+---
+<nav class="flex justify-start lg:justify-center text-muted-foreground gap-4 md:gap-8 lg:gap-12">
+  {pages.map((page) => (
+      <a 
+        href={page.url}
+        data-replace={page.name}
+      >
+        <span>{page.name}</span>
+      </a>
+  ))}
+</nav>
+
+<style>
+  a {
+    overflow: hidden;
+    position: relative;
+  }
+
+  a::before,
+  a::after {
+  content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+  }
+  a::before {
+    background-color: var(--color-primary);
+    height: 3px;
+    bottom: -1px;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  a::after {
+    content: attr(data-replace);
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform: translate3d(200%, 0, 0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    color: var(--color-primary);
+  }
+
+  a:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+  a:hover::after {
+    transform: translate3d(0, 0, 0);
+  }
+
+  a span {
+    display: inline-block;
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  a:hover span {
+    transform: translate3d(-200%, 0, 0);
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import LanguageSelect from "./LanguageSelect";
+import { languages } from "@/i18n/ui";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import ThemeToggle from "./ThemeToggle";
+import NavBar from "./NavBar.astro";
+
+const defaultLocale = "es";
+const locales = ["es", "en"];
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+const t = useTranslations(currentLang);
+
+function getBasePath(path: string, currentLang: string, defaultLocale: string) {
+  if (currentLang === defaultLocale) {
+    return path;
+  } else {
+    return path.replace(`/${currentLang}`, '') || '/';
+  }
+}
+
+const basePath = getBasePath(currentPath, currentLang, defaultLocale);
+
+const languageOptions = locales.map((lang) => {
+  const url = getRelativeLocaleUrl(lang, basePath);
+  return {
+    value: lang,
+    label: languages[lang as keyof typeof languages],
+    url: url
+  };
+});
+
+const themeLabels = {
+  light: t('theme.light'),
+  dark: t('theme.dark'),
+  system: t('theme.system'),
+  toggleTheme: t('theme.toggle'),
+  lightMode: t('theme.lightMode'),
+  darkMode: t('theme.darkMode'),
+  autoMode: t('theme.autoMode')
+};
+---
+<div class="fixed backdrop-blur-2xl flex flex-grow w-full border-b justify-end items-center p-4 z-10">
+  <div class="flex-grow">
+    <NavBar />
+  </div>
+  <div class="flex justify-end gap-4 absolute">
+    <LanguageSelect 
+      client:load
+      options={languageOptions}
+      currentLang={currentLang}
+    />
+    <ThemeToggle 
+      client:load
+      labels={themeLabels}
+    />
+  </div>
+</div>
