@@ -1,0 +1,24 @@
+[
+  {
+    "id" : 1,
+    "position": "Ingeniero de Software en Prácticas",
+    "company": "Accenture",
+    "location": "Madrid, España",
+    "startDate": "2025-02",
+    "endDate": "2025-05",
+    "description": "",
+    "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
+    "type": "Jornada parcial"
+  },
+  {
+    "id" : 2,
+    "position": "Desarrollador Web",
+    "company": "Motion & Balance",
+    "location": "Remoto",
+    "startDate": "2022-10",
+    "endDate": "2024-03",
+    "description": "",
+    "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
+    "type": "Jornada parcial"
+  }
+]

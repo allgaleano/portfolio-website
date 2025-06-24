@@ -1,0 +1,24 @@
+[
+  {
+    "id" : 1,
+    "position": "Software Engineer Internship",
+    "company": "Accenture",
+    "location": "Madrid, Spain",
+    "startDate": "2025-02",
+    "endDate": "2025-05",
+    "description": "",
+    "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
+    "type": "Part-time"
+  },
+  {
+    "id" : 2,
+    "position": "Web Developer",
+    "company": "Motion & Balance",
+    "location": "Remote",
+    "startDate": "2022-10",
+    "endDate": "2024-03",
+    "description": "",
+    "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
+    "type": "Part-time"
+  }
+]

@@ -1,4 +1,4 @@
-import { SiAstro, SiMongodb, SiOracle, SiSpring, SiSpringboot, SiVite } from "react-icons/si";
+import { SiAstro, SiGnubash, SiMongodb, SiOracle, SiSpring, SiSpringboot, SiVite } from "react-icons/si";
 import { Badge } from "./ui/badge";
 import { useEffect, useRef } from "react";
 import { RiJavaLine, RiJavascriptFill, RiNextjsFill } from "react-icons/ri";
@@ -23,6 +23,7 @@ const techList = [
   { name: 'GitHub', icon: <FaGithub /> },
   { name: 'GitLab', icon: <FaGitlab /> },
   { name: 'Linux', icon: <PiLinuxLogoFill /> },
+  { name: 'Bash', icon: <SiGnubash />},
   { name: 'JavaScript', icon: <RiJavascriptFill /> },
   { name: 'TypeScript', icon: <BiLogoTypescript /> },
   { name: 'React', icon: <FaReact /> },

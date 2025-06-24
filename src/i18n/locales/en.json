@@ -16,12 +16,10 @@
   "nav.home": "Home",
   "nav.experience": "Experience",
   "nav.projects": "Projects",
+  "nav.education": "Education",
   "nav.contact": "Contact",
   
   "experience.title": "Experience",
   "experience.present": "Present",
-  "experience.years": "years",
-  "experience.year": "year",
-  "experience.months": "months",
-  "experience.month": "month"
+  "experience.technologies": "Technologies"
 }

@@ -8,20 +8,24 @@ const t = useTranslations(lang);
 const pages = [
   {
     name: t('nav.home'),
-    url: ""
+    url: "#"
   },
   {
     name: t('nav.experience'),
-    url: ""
+    url: "#"
   },
   {
     name: t('nav.projects'),
-    url: ""
+    url: "#"
+  },
+  {
+    name: t('nav.education'),
+    url: "#"
   },
   {
     name: t('nav.contact'),
-    url: ""
-  }
+    url: "#"
+  },
 ]
 
 ---
@@ -50,7 +54,7 @@ const pages = [
     left: 0;
   }
   a::before {
-    background-color: var(--color-primary);
+    background-color: var(--color-foreground);
     height: 3px;
     bottom: -1px;
     transform-origin: 100% 50%;
@@ -64,7 +68,7 @@ const pages = [
     transform-origin: 100% 50%;
     transform: translate3d(200%, 0, 0);
     transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
-    color: var(--color-primary);
+    color: var(--color-foreground);
   }
 
   a:hover::before {

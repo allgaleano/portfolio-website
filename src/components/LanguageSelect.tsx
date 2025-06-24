@@ -22,7 +22,7 @@ export default function LanguageSelect({ currentLang, options }: LanguageSelectP
 
   return (
     <Select value={currentLang} onValueChange={handleLanguageChange}>
-      <SelectTrigger>
+      <SelectTrigger >
         <SelectValue>
           <Languages className="text-foreground" /> <span className="hidden sm:block">{options.find(option => option.value === currentLang)?.label}</span>
         </SelectValue>
