@@ -1,9 +1,10 @@
 ---
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import { formatDate, isCurrent, sortExperiencesByDate } from "@/lib/experiences";
+import { formatDate, isCurrent, sortExperiencesByDate } from "@/lib/date";
 import { getCollection } from "astro:content";
 import SectionTitle from "./SectionTitle.astro";
 import Section from "@/layouts/Section.astro";
+import type { CollectionEntry } from "astro:content";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -11,7 +12,7 @@ const t = useTranslations(lang);
 const collectionName = `experience-${lang}` as const;
 const experiences = await getCollection(collectionName);
 
-const sortedExperiences = sortExperiencesByDate(experiences);
+const sortedExperiences: CollectionEntry<typeof collectionName>[] = sortExperiencesByDate(experiences);
 ---
 <Section >
   <SectionTitle id={t('nav.experience')} title={t('experience.title')} />

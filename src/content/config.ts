@@ -13,6 +13,19 @@ const experienceSchema = z.object({
   type: z.string(),
 });
 
+const projectsSchema = z.object({
+  id: z.number(),
+  title: z.string(),
+  name: z.string().optional(),
+  startDate: z.string(),
+  endDate: z.string(),
+  description: z.array(z.string()),
+  technologies: z.array(z.string()),
+  githubUrl: z.string().optional(),
+  videosUrl: z.array(z.string()).optional(),
+  imagesUrl: z.array(z.string()).optional(),
+})
+
 const experienceEs = defineCollection({
   loader: file("src/content/experience-es.json"),
   schema: experienceSchema,
@@ -23,7 +36,19 @@ const experienceEn = defineCollection({
   schema: experienceSchema,
 });
 
+export const projectsEs = defineCollection({
+  loader: file("src/content/projects-es.json"),
+  schema: projectsSchema,
+});
+
+export const projectsEn = defineCollection({
+  loader: file("src/content/projects-en.json"),
+  schema: projectsSchema,
+});
+
 export const collections = {
   'experience-es': experienceEs,
   'experience-en': experienceEn,
+  'projects-es': projectsEs,
+  'projects-en': projectsEn,
 };

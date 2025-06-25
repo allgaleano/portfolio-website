@@ -2,10 +2,54 @@
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import Section from "@/layouts/Section.astro";
 import SectionTitle from "./SectionTitle.astro";
+import { getCollection } from "astro:content";
+import { formatDate, isCurrent, sortProjectsByDate } from "@/lib/date";
+import type { CollectionEntry } from "astro:content";
+import { BadgeCheck } from "lucide-react";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const collectionName = `projects-${lang}` as const;
+const projects = await getCollection(collectionName);
+
+const sortedProjects: CollectionEntry<typeof collectionName>[] = sortProjectsByDate(projects);
 ---
 <Section>
   <SectionTitle id={t('nav.projects')} title={t('projects.title')} />
+  <div class="flex flex-col gap-4">
+    {sortedProjects.map((project) => (
+      <div 
+        id={String(project.data.id)} 
+        class="backdrop-blur-sm rounded-lg p-8 border"
+      >
+        <div class="flex gap-2 items-center justify-between">
+          <div class="flex items-center gap-2">
+            <h3 class="text-xl w-fit font-semibold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 dark:to-foreground/70">{project.data.title}</h3>
+            {project.data.name && (
+              <span class="h-[2px] w-3 bg-foreground/60"></span>
+              <div class="flex items-center gap-2 text-primary bg-primary/10 px-2 rounded-full border border-primary/30">
+                <BadgeCheck size="18px" />
+                <p class="text-lg font-semibold">
+                  {project.data.name}
+                </p>
+              </div>
+            )}
+          </div>
+          <div class="flex gap-2 items-center">
+            <span class="text-sm font-medium first-letter:uppercase">
+              {formatDate(project.data.startDate, lang)}
+            </span>
+            <span>→</span>
+            <span class="text-sm font-medium first-letter:uppercase">
+              {isCurrent(project.data.endDate)
+                ? t('projects.present')
+                : formatDate(project.data.endDate, lang)
+              }
+            </span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
 </Section>
