@@ -5,6 +5,7 @@ import { languages } from "@/i18n/ui";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import ThemeToggle from "./ThemeToggle";
 import NavBar from "./NavBar.astro";
+import SideBar from "./SideBar";
 
 const defaultLocale = "es";
 const locales = ["es", "en"];
@@ -41,20 +42,49 @@ const themeLabels = {
   darkMode: t('theme.darkMode'),
   autoMode: t('theme.autoMode')
 };
+
+const pages = [
+  {
+    name: t('nav.home'),
+    url: `#${t('nav.home')}`
+  },
+  {
+    name: t('nav.experience'),
+    url: `#${t('nav.experience')}`
+  },
+  {
+    name: t('nav.projects'),
+    url: `#${t('nav.projects')}`
+  },
+  {
+    name: t('nav.education'),
+    url: "#"
+  },
+  {
+    name: t('nav.contact'),
+    url: "#"
+  },
+]
 ---
-<div class="fixed backdrop-blur-2xl flex flex-grow w-full border-b justify-end items-center p-4 z-10">
-  <div class="flex-grow">
-    <NavBar />
-  </div>
-  <div class="flex justify-end gap-4 absolute">
-    <LanguageSelect 
-      client:load
-      options={languageOptions}
-      currentLang={currentLang}
+<div class="fixed backdrop-blur-2xl w-full border-b p-4 z-10 flex justify-center">
+  <div class="flex items-center justify-between w-full md:max-w-[1200px]">
+    <SideBar 
+      pages={pages}
+      client:load 
     />
-    <ThemeToggle 
-      client:load
-      labels={themeLabels}
+    <NavBar 
+      pages={pages}
     />
+    <div class="flex gap-4">
+      <LanguageSelect 
+        client:load
+        options={languageOptions}
+        currentLang={currentLang}
+      />
+      <ThemeToggle 
+        client:load
+        labels={themeLabels}
+      />
+    </div>
   </div>
 </div>

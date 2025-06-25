@@ -8,7 +8,7 @@ const experienceSchema = z.object({
   location: z.string(),
   startDate: z.string(),
   endDate: z.string(),
-  description: z.string(),
+  description: z.array(z.string()),
   technologies: z.array(z.string()),
   type: z.string(),
 });

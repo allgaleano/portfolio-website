@@ -1,7 +1,9 @@
 ---
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import { calculateDuration, formatDate, isCurrent, sortExperiencesByDate } from "@/lib/experiences";
+import { formatDate, isCurrent, sortExperiencesByDate } from "@/lib/experiences";
 import { getCollection } from "astro:content";
+import SectionTitle from "./SectionTitle.astro";
+import Section from "@/layouts/Section.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -11,17 +13,15 @@ const experiences = await getCollection(collectionName);
 
 const sortedExperiences = sortExperiencesByDate(experiences);
 ---
-<section class="max-w-[1200px] mx-auto rounded-lg p-6 space-y-8 mb-12">
-  <h2 class="text-2xl w-fit font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground dark:from-foreground dark:to-foreground/60" >
-    {t('experience.title')}
-  </h2>
+<Section >
+  <SectionTitle id={t('nav.experience')} title={t('experience.title')} />
   <div class="relative">
-    <div class="absolute left-[0.5rem] top-4 bottom-4 w-0.5 bg-gradient-to-b from-transparent via-primary to-transparent z-0"></div>
+    <div class="absolute left-[0.45rem] top-4 bottom-4 w-0.5 bg-gradient-to-b from-transparent via-primary to-transparent z-0"></div>
     <div class="space-y-8">
       {sortedExperiences.map((experience) => (
         <div class="relative flex items-start gap-4">
           <!-- Timeline dot -->
-          <div class="z-10 flex items-center justify-center size-4 border-2 border-primary bg-background rounded-full self-center">
+          <div class="flex items-center justify-center size-4 border-2 border-primary bg-background rounded-full self-center">
             {isCurrent(experience.data.endDate) && (
               <div class="size-2 bg-primary rounded-full animate-pulse"></div>
             )}
@@ -29,14 +29,14 @@ const sortedExperiences = sortExperiencesByDate(experiences);
           
           <!-- Experience content -->
           <div class="flex-1 min-w-0">
-            <div class="backdrop-blur-sm rounded-lg p-6 border border-primary bg-primary/5 ">
+            <div class="backdrop-blur-sm rounded-lg p-6 border border-primary bg-primary/5 space-y-4">
               <!-- Header -->
-              <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div class="flex flex-col md:flex-row items-start md:justify-between gap-2">
                 <div class="flex flex-col gap-1">
                   <h3 class="text-xl font-semibold">
                     {experience.data.position}
                   </h3>
-                  <p class="font-medium text-primary">
+                  <p class="w-fit -ml-1 font-medium text-primary bg-primary/10 px-2 rounded-full border border-primary/30">
                     {experience.data.company}
                   </p>
                   <p class="text-sm text-muted-foreground">
@@ -44,33 +44,37 @@ const sortedExperiences = sortExperiencesByDate(experiences);
                   </p>
                 </div>
                 
-                <div class="flex flex-col gap-1 items-start md:items-end mt-2 md:mt-0">
-                  <div class="flex items-center space-x-2">
-                    <span class="text-sm font-medium">
+                <div class="flex flex-col gap-2 items-start md:items-end">
+                  <div class="flex flex-wrap items-center gap-1">
+                    <span class="text-sm font-medium first-letter:uppercase">
                       {formatDate(experience.data.startDate, lang)}
                     </span>
                     <span>→</span>
-                    <span class="text-sm font-medium">
+                    <span class="text-sm font-medium first-letter:uppercase">
                       {isCurrent(experience.data.endDate) 
                         ? t('experience.present')
                         : formatDate(experience.data.endDate, lang)
                       }
                     </span>
                   </div>
-                  <div class="text-sm text-muted-foreground">
-                    {calculateDuration(experience.data.startDate, experience.data.endDate, lang)}
-                  </div>
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/15 text-primary">
+                  <span class="inline-flex items-center text-sm text-muted-foreground">
                     {experience.data.type}
                   </span>
                 </div>
               </div>
               
               <!-- Description -->
-              {experience.data.description && (
-                <p class="text-muted-foreground">
-                  {experience.data.description}
-                </p>
+              {experience.data.description && experience.data.description.length > 0 && (
+                <ul class="relative space-y-2 text-sm text-foreground/80">
+                  {experience.data.description.map((item: string) => (
+                    <div class="flex items-center gap-2">
+                      <span class="size-2 border-2 border-primary rounded-full" />
+                      <li>
+                        {item}
+                      </li>
+                    </div>
+                  ))}
+                </ul>
               )}
               
               <!-- Technologies -->
@@ -81,7 +85,7 @@ const sortedExperiences = sortExperiencesByDate(experiences);
                   </p>
                   <div class="flex flex-wrap gap-2">
                     {experience.data.technologies.map((tech: string) => (
-                      <span class="text-sm py-1 px-2 rounded-md bg-foreground/5">
+                      <span class="text-sm py-1 px-2 rounded-md bg-foreground/3 dark:bg-foreground/5">
                         {tech}
                       </span>
                     ))}
@@ -94,4 +98,4 @@ const sortedExperiences = sortExperiencesByDate(experiences);
       ))}
     </div>
   </div>
-</section>
+</Section>

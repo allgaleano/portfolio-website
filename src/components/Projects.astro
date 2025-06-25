@@ -1,0 +1,11 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import Section from "@/layouts/Section.astro";
+import SectionTitle from "./SectionTitle.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<Section>
+  <SectionTitle id={t('nav.projects')} title={t('projects.title')} />
+</Section>

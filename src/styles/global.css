@@ -118,6 +118,9 @@
     @apply bg-background text-foreground;
     font-family: 'Open Sans', sans-serif;
   }
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer utilities {

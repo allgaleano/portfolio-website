@@ -1,0 +1,11 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+---
+<h2 id={id} class="text-2xl w-fit font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground dark:from-foreground dark:to-foreground/60" >
+  {title}
+</h2>

@@ -6,7 +6,14 @@
     "location": "Madrid, Spain",
     "startDate": "2025-02",
     "endDate": "2025-05",
-    "description": "",
+    "description": [
+      "Developed and documented RESTful APIs for Back-Office software in the banking sector using Java and Spring Boot within a microservices architecture.",
+      "Met tight delivery deadlines by coordinating with the frontend team for integration of various functionalities.",
+      "Passed SonarQube quality controls using tools like JUnit and Mockito for unit testing.",
+      "Collaborated with multidisciplinary teams to transform functional requirements into technical requirements.",
+      "Implemented batches with Spring Batch for massive data processing.",
+      "Performed Oracle SQL and MongoDB database optimizations."
+    ],
     "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
     "type": "Part-time"
   },
@@ -17,7 +24,11 @@
     "location": "Remote",
     "startDate": "2022-10",
     "endDate": "2024-03",
-    "description": "",
+    "description": [
+      "Developed web pages and performed infrastructure maintenance on AWS.",
+      "Migrated domain servers and email clients between providers to optimize costs and improve workflow efficiency.",
+      "Designed products and catalogs, attending conferences to support sales."
+    ],
     "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
     "type": "Part-time"
   }

@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import Layout from '../layouts/Layout.astro';
+import Projects from '@/components/Projects.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -12,5 +13,6 @@ const t = useTranslations(lang);
 <Layout title={t('main.layout.title')} >
   <Header />
   <Hero t={t}/>
-  <Experience t={t} />
+  <Experience />
+  <Projects />
 </Layout>

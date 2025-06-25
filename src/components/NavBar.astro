@@ -1,42 +1,21 @@
 ---
-import { getLangFromUrl, useTranslations } from "@/i18n/utils"
+export interface Props {
+  pages: {
+    name: string;
+    url: string;
+  }[];
+};
 
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
-const pages = [
-  {
-    name: t('nav.home'),
-    url: "#"
-  },
-  {
-    name: t('nav.experience'),
-    url: "#"
-  },
-  {
-    name: t('nav.projects'),
-    url: "#"
-  },
-  {
-    name: t('nav.education'),
-    url: "#"
-  },
-  {
-    name: t('nav.contact'),
-    url: "#"
-  },
-]
-
+const { pages } = Astro.props;
 ---
-<nav class="flex justify-start lg:justify-center text-muted-foreground gap-4 md:gap-8 lg:gap-12">
+<nav class="hidden md:flex justify-start px-4 lg:justify-center text-muted-foreground gap-4 md:gap-8 lg:gap-12">
   {pages.map((page) => (
-      <a 
-        href={page.url}
-        data-replace={page.name}
-      >
-        <span>{page.name}</span>
-      </a>
+    <a 
+      href={page.url}
+      data-replace={page.name}
+    >
+      <span>{page.name}</span>
+    </a>
   ))}
 </nav>
 
@@ -86,5 +65,15 @@ const pages = [
 
   a:hover span {
     transform: translate3d(-200%, 0, 0);
+  }
+
+  #hamburger-btn span {
+    display: block;
+    width: 1.5rem;
+    height: 0.1rem;
+    background-color: var(--color-muted-foreground);
+    margin: 0.2rem 0;
+    border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
   }
 </style>

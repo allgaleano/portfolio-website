@@ -6,8 +6,15 @@
     "location": "Madrid, España",
     "startDate": "2025-02",
     "endDate": "2025-05",
-    "description": "",
-    "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
+    "description": [
+      "Desarrollé y documenté APIs RESTful para un software Back-Office en el sector bancario usando Java y Spring Boot dentro de una arquitectura de microservicios.",
+      "Cumplí fechas de entrega ajustadas coordinando con el equipo de frontend la integración de las distintas funcionalidades.",
+      "Pasé controles de calidad de SonarQube utilizando herramientas como JUnit y Mockito para tests unitarios.",
+      "Colaboré con equipos multidisciplinares para transformar requisitos funcionales a requisitos técnicos.",
+      "Implementé batches con Spring Batch para el procesamiento de datos masivo.",
+      "Realicé optimizaciones de base datos Oracle SQL y MongoDB."
+    ],
+    "technologies" : ["Java", "Spring Boot", "Hibernate", "Oracle SQL", "MongoDB", "Spring Batch","SonarQube", "JUnit", "Mockito"],
     "type": "Jornada parcial"
   },
   {
@@ -17,8 +24,12 @@
     "location": "Remoto",
     "startDate": "2022-10",
     "endDate": "2024-03",
-    "description": "",
-    "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
+    "description": [
+      "Desarrollé páginas web y realicé el mantenimiento de la infraestructura en AWS.",
+      "Migré servidores de dominio y clientes de email entre proveedores para optimizar costes y mejorar la eficiencia en el flujo de trabajo.",
+      "Diseño de productos y catálogos acudiendo a congresos para apoyar la venta de los mismos."
+    ],
+    "technologies" : ["Java", "Spring Boot", "PostgreSQL", "Redis", "AWS", "Docker", "Linux", "HTML", "CSS", "JavaScript", "TypeScript", "React"],
     "type": "Jornada parcial"
   }
 ]
