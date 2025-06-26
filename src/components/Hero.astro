@@ -1,6 +1,8 @@
 ---
 import Section from "@/layouts/Section.astro";
 import TechBadges from "./TechBadges";
+import { Image } from "astro:assets";
+import portrait from "../assets/portrait.png";
 
 const { t } = Astro.props;
 
@@ -14,8 +16,11 @@ const text = {
 <Section id={t('nav.home')}>
   <div class="p-8 flex flex-col md:flex-row items-center gap-12 mt-20">
     <div class="bg-conic/[from_var(--border-angle)] from-transparent from-40% via-primary via-60% to-transparent to-100% p-[2px] rounded-full animate-rotate-border">
-      <div class="bg-background size-86 rounded-full">
-        <img src="" alt="">
+      <div class="bg-background size-86 rounded-full overflow-hidden">
+        <Image 
+          src={portrait}
+          alt={t('hero.img.alt')}
+        />
       </div>
     </div>
     <div class="flex flex-col items-start gap-2">

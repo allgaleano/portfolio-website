@@ -14,12 +14,15 @@
     ],
     "technologies" : ["Java", "Spring Boot", "PostgreSQL", "Redis", "React", "TypeScript", "Vite", "TanStack"],
     "videosUrl" : [
-      "https://example.com/video1.mp4",
-      "https://example.com/video2.mp4"
+      {
+        "mp4" : "/videos/INSOLE360_DEMO.mp4",
+        "webm" : "/videos/INSOLE360_DEMO.webm"
+      }
     ],
     "imagesUrl" : [
-      "https://example.com/image1.jpg",
-      "https://example.com/image2.jpg"
+      "/images/insole360_homescreen.webp",
+      "/images/insole360_organizations.webp",
+      "/images/insole360_security.webp"
     ]
   },
   {
@@ -34,9 +37,13 @@
       "Unit tests with JUnit and Mockito and integration tests with MockMVC."
     ],
     "technologies" : ["Java", "Spring Boot", "PostgreSQL", "React", "TypeScript", "Next.js", "JUnit", "Mockito"],
-    "githubUrl" : "github.com/allgaleano/tennis-tournament-manager",
-    "videosUrl" : [],
-    "imagesUrl" : []
+    "githubUrl" : "https://github.com/allgaleano/tennis-tournament-manager",
+    "videosUrl" : [
+      {
+        "mp4" : "/videos/MatchPoint_Overview.mp4",
+        "webm" : "/videos/MatchPoint_Overview.webm"
+      }
+    ]
   },
   {
     "id": 3,
@@ -47,7 +54,7 @@
       "Implemented a REST API with JAX-RS and MySQL server, manual pagination with navigation and filtering options, additionally developed a CLI client with Java to test the API dynamically."
     ],
     "technologies" : ["Java", "JAX-RS", "MySQL"],
-    "githubUrl" : "github.com/allgaleano/Wines-Rating-API-Rest"
+    "githubUrl" : "https://github.com/allgaleano/Wines-Rating-API-Rest"
   },
   {
     "id": 4,
@@ -58,6 +65,6 @@
       "Developed a web application that employs the A* algorithm for route calculation with heuristic estimations in the Lyon metro. Implemented with Node.js and Next.js."
     ],
     "technologies" : ["Node.js", "Next.js", "JavaScript"],
-    "githubUrl" : "github.com/allgaleano/NodeMetroLyon"
+    "githubUrl" : "https://github.com/allgaleano/NodeMetroLyon"
   }
 ]

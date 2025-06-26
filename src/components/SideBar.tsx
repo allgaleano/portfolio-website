@@ -25,7 +25,7 @@ export default function SideBar({ pages }: SideBarProps) {
             ))}
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="dark:bg-transparent dark:backdrop-blur-xl">
+      <SheetContent side="left" className="dark:bg-background/50 dark:backdrop-blur-3xl">
         <nav className="flex flex-col justify-center text-lg gap-12 text-muted-foreground h-full p-16">
           {pages.map((page) => (
             <a

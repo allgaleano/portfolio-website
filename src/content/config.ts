@@ -22,7 +22,10 @@ const projectsSchema = z.object({
   description: z.array(z.string()),
   technologies: z.array(z.string()),
   githubUrl: z.string().optional(),
-  videosUrl: z.array(z.string()).optional(),
+  videosUrl: z.array(z.object({
+    mp4: z.string(),
+    webm: z.string()
+  })).optional(),
   imagesUrl: z.array(z.string()).optional(),
 })
 
