@@ -28,12 +28,13 @@ export default function SideBar({ pages }: SideBarProps) {
       <SheetContent side="left" className="dark:bg-transparent dark:backdrop-blur-xl">
         <nav className="flex flex-col justify-center text-lg gap-12 text-muted-foreground h-full p-16">
           {pages.map((page) => (
-            <a 
+            <a
+              key={page.name} 
               href={page.url}
               data-replace={page.name}
               onClick={() => setOpen(false)}
             >
-              <span>{page.name}</span>
+              {page.name}
             </a>
           ))}
         </nav>

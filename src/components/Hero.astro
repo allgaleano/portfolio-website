@@ -1,7 +1,5 @@
 ---
-import { Badge } from "./ui/badge";
-import { FaJava } from "react-icons/fa";
-import { SiSpring } from "react-icons/si";
+import Section from "@/layouts/Section.astro";
 import TechBadges from "./TechBadges";
 
 const { t } = Astro.props;
@@ -13,13 +11,15 @@ const text = {
 }
 
 ---
-<section id={t('nav.home')} class="flex flex-col gap-4 items-center max-w-[1200px] mx-auto py-24">
-  <div class="p-8 w-fit flex flex-col md:flex-row items-center gap-12">
-    <div class="flex items-center">
-      <div class="bg-background size-86 rounded-full border border-primary" />
+<Section id={t('nav.home')}>
+  <div class="p-8 flex flex-col md:flex-row items-center gap-12 mt-20">
+    <div class="bg-conic/[from_var(--border-angle)] from-transparent from-40% via-primary via-60% to-transparent to-100% p-[2px] rounded-full animate-rotate-border">
+      <div class="bg-background size-86 rounded-full">
+        <img src="" alt="">
+      </div>
     </div>
     <div class="flex flex-col items-start gap-2">
-      <h1 class="text-4xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary/80 to-primary to dark:from-primary dark:to-primary/60">{text.title}</h1>
+      <h1 class="text-4xl lg:text-6xl font-bold whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-primary/80 to-primary to dark:from-primary dark:to-primary/60">{text.title}</h1>
       <p class="text-2xl lg:h-12 lg:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-foreground/80 to-foreground dark:from-foreground dark:to-foreground/60">{text.subtitle}</p>
       <p class="text-muted-foreground mt-2">{text.description}</p>
     </div>
@@ -27,4 +27,4 @@ const text = {
   <div class="w-full px-4 md:px-8">
     <TechBadges client:load/>
   </div>
-</section>
+</Section>

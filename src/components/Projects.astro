@@ -5,7 +5,10 @@ import SectionTitle from "./SectionTitle.astro";
 import { getCollection } from "astro:content";
 import { formatDate, isCurrent, sortProjectsByDate } from "@/lib/date";
 import type { CollectionEntry } from "astro:content";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, ExternalLink, Lock, LockKeyhole } from "lucide-react";
+import { Button } from "./ui/button";
+import { FaGithub } from "react-icons/fa";
+import { cn } from "@/lib/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,39 +18,83 @@ const projects = await getCollection(collectionName);
 
 const sortedProjects: CollectionEntry<typeof collectionName>[] = sortProjectsByDate(projects);
 ---
-<Section>
-  <SectionTitle id={t('nav.projects')} title={t('projects.title')} />
-  <div class="flex flex-col gap-4">
+<Section id={t('nav.projects')}>
+  <SectionTitle title={t('projects.title')} />
+  <div class="flex flex-col gap-8">
     {sortedProjects.map((project) => (
-      <div 
-        id={String(project.data.id)} 
-        class="backdrop-blur-sm rounded-lg p-8 border"
-      >
-        <div class="flex gap-2 items-center justify-between">
-          <div class="flex items-center gap-2">
-            <h3 class="text-xl w-fit font-semibold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 dark:to-foreground/70">{project.data.title}</h3>
-            {project.data.name && (
-              <span class="h-[2px] w-3 bg-foreground/60"></span>
-              <div class="flex items-center gap-2 text-primary bg-primary/10 px-2 rounded-full border border-primary/30">
-                <BadgeCheck size="18px" />
-                <p class="text-lg font-semibold">
-                  {project.data.name}
-                </p>
+      <div class="relative">
+        {isCurrent(project.data.endDate) && (
+          <div class="absolute bg-primary/15 w-full h-full rounded-lg inset-0 blur-xl"></div>
+        )}
+        <div 
+          id={String(project.data.id)} 
+          class={cn("relative border bg-background p-8 rounded-lg space-y-4", 
+            isCurrent(project.data.endDate) ? "border-primary/50" : ""
+          )}
+        >
+          {isCurrent(project.data.endDate) && (
+            <div class="absolute top-4 right-4 w-2 h-2 bg-primary rounded-full grid place-content-center">
+              <div class="w-4 h-4 bg-primary/50 rounded-full animate-pulse"></div>
+            </div>
+          )}
+          <div class="flex flex-wrap gap-2 items-center justify-between">
+            <div class="flex flex-wrap items-center gap-2 md:gap-4">
+              <h3 class="text-xl w-fit font-semibold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 dark:to-foreground/70">{project.data.title}</h3>
+              <div class="flex items-center gap-2">
+                {project.data.name && (
+                  <div class="flex items-center gap-2 text-primary bg-primary/10 px-2 rounded-full border border-primary/30">
+                    <BadgeCheck size="18px" />
+                    <p class="text-lg font-semibold whitespace-nowrap">
+                      {project.data.name}
+                    </p>
+                  </div>
+                )}
+                {project.data.githubUrl ? (
+                  <Button client:load variant="outline" size="sm" className="rounded-full">
+                    <FaGithub client:load />
+                    <ExternalLink client:load />
+                  </Button>
+                ) : (
+                  <span class="border rounded-full p-2 text-xs text-muted-foreground">
+                    <LockKeyhole className="size-4 text-foreground" client:load /> 
+                  </span>
+                )}
               </div>
-            )}
+            </div>
+            <div class="flex gap-2 items-center text-muted-foreground">
+              <span class="text-sm font-medium first-letter:uppercase">
+                {formatDate(project.data.startDate, lang)}
+              </span>
+              <span>→</span>
+              <span class="text-sm font-medium first-letter:uppercase">
+                {isCurrent(project.data.endDate)
+                  ? <span class="bg-primary/15 px-1 rounded-md">{t('projects.present')}</span>
+                  : formatDate(project.data.endDate, lang)
+                }
+              </span>
+            </div>
           </div>
-          <div class="flex gap-2 items-center">
-            <span class="text-sm font-medium first-letter:uppercase">
-              {formatDate(project.data.startDate, lang)}
-            </span>
-            <span>→</span>
-            <span class="text-sm font-medium first-letter:uppercase">
-              {isCurrent(project.data.endDate)
-                ? t('projects.present')
-                : formatDate(project.data.endDate, lang)
-              }
-            </span>
-          </div>
+          {project.data.description && project.data.description.length > 0 && (
+            <ul class="relative space-y-2 text-sm text-foreground/70">
+              {project.data.description.map((item: string) => (
+                <div class="flex items-baseline leading-6 gap-2">
+                  <span class="size-2 border-2 border-primary rounded-full flex-shrink-0" />
+                  <li>
+                    {item}
+                  </li>
+                </div>
+              ))}
+            </ul>
+          )}
+          {project.data.technologies && project.data.technologies.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {project.data.technologies.map((tech) => (
+                <span class="inline-flex items-center px-2 py-1 bg-foreground/5 text-foreground rounded-md text-sm font-medium">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     ))}
