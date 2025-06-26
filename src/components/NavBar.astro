@@ -8,7 +8,7 @@ export interface Props {
 
 const { pages } = Astro.props;
 ---
-<nav class="hidden md:flex justify-start px-4 lg:justify-center text-muted-foreground gap-4 md:gap-8 lg:gap-12">
+<nav class="hidden md:flex justify-start lg:justify-center text-muted-foreground gap-4 md:gap-8 lg:gap-12">
   {pages.map((page) => (
     <a 
       href={page.url}
