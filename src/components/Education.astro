@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import Section from "@/layouts/Section.astro";
+import SectionTitle from "./SectionTitle.astro";
+import { getCollection } from "astro:content";
+import { formatDate, sortEducationByEndDate } from "@/lib/date";
+import type { CollectionEntry } from "astro:content";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const collectionName = `education-${lang}` as const;
+
+const education = await getCollection(collectionName);
+
+
+const sortedEducation: CollectionEntry<typeof collectionName>[] = sortEducationByEndDate(education);
+---
+
+<Section id={t('nav.education')}>
+  <SectionTitle title={t('education.title')} />
+  <div class="flex flex-col gap-8">
+    {sortedEducation.map((edu) => {
+      return (
+        <div class="border bg-background p-8 rounded-lg space-y-4">
+          <div class="flex items-center justify-between">
+            {edu.data.institution ? (
+              <h3 class="text-xl w-fit font-semibold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 dark:to-foreground/70">
+                {edu.data.title} - {edu.data.institution}
+              </h3>
+            ) : (
+              <h3 class="text-xl w-fit font-semibold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 dark:to-foreground/70">
+                {edu.data.title}
+              </h3>
+            )}
+            <div class="flex items-center gap-2 text-sm text-muted-foreground">
+              <p class="first-letter:uppercase">
+                {formatDate(edu.data.startDate, lang)}
+              </p>
+              {edu.data.endDate && (
+                <span>→</span>
+                <p class="first-letter:uppercase">
+                  {formatDate(edu.data.endDate, lang)}
+                </p>
+              )}
+            </div>
+          </div>
+          {edu.data.description && edu.data.description.length > 0 && (
+             <ul class="relative space-y-2 text-sm text-foreground/70">
+              {edu.data.description.map((item: string) => (
+                <div class="flex items-baseline leading-6 gap-2">
+                  <span class="size-2 border-2 border-primary rounded-full flex-shrink-0" />
+                  <li>
+                    {item}
+                  </li>
+                </div>
+              ))}
+            </ul>
+          )}
+        </div>
+      );
+    })}
+
+  </div>
+</Section>

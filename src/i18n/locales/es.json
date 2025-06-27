@@ -24,5 +24,7 @@
   "experience.technologies": "Tecnologías",
 
   "projects.title": "Proyectos",
-  "projects.present" : "En desarrollo"
+  "projects.present" : "En desarrollo",
+
+  "education.title": "Educación"
 }

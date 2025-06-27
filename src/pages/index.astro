@@ -5,6 +5,7 @@ import Hero from '../components/Hero.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import Layout from '../layouts/Layout.astro';
 import Projects from '@/components/Projects.astro';
+import Education from '@/components/Education.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,4 +16,5 @@ const t = useTranslations(lang);
   <Hero t={t}/>
   <Experience />
   <Projects />
+  <Education />
 </Layout>

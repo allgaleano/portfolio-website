@@ -84,9 +84,6 @@ export function sortExperiencesByDate(
     );
   });
 }
-/**
- * Sorts experiences by start date (most recent first)
- */
 export function sortProjectsByDate(
   projects: any[]
 ): CollectionEntry<
@@ -96,6 +93,19 @@ export function sortProjectsByDate(
     return (
       new Date(b.data.startDate).getTime() -
       new Date(a.data.startDate).getTime()
+    );
+  });
+}
+
+export function sortEducationByEndDate(
+  education: any[]
+): CollectionEntry<
+  "education-en" | "education-es"
+>[] {
+  return education.sort((a, b) => {
+    return (
+      new Date(b.data.endDate).getTime() -
+      new Date(a.data.endDate).getTime()
     );
   });
 }

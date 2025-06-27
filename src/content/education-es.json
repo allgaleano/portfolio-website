@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title" : "Ingeniería Informática",
+    "institution" : "Universidad Politécnica de Madrid",
+    "startDate" : "2021-09",
+    "endDate" : "2025-06"
+  },
+  {
+    "id" : 2,
+    "title" : "Codemotion Madrid 2023",
+    "startDate" : "2023-05",
+    "description" : [
+      "Asistencia a charlas y talleres sobre las últimas tendencias en el desarrollo de software"
+    ]
+  }
+]

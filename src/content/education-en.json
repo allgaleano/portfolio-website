@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title" : "Computer Engineering",
+    "institution" : "Polytechnic University of Madrid",
+    "startDate" : "2021-09",
+    "endDate" : "2025-06"
+  },
+  {
+    "id" : 2,
+    "title" : "Codemotion Madrid 2023",
+    "startDate" : "2023-05",
+    "description" : [
+      "Attended talks and workshops on the latest trends in software development"
+    ]
+  }
+]

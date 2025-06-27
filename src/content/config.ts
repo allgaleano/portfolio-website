@@ -29,6 +29,15 @@ const projectsSchema = z.object({
   imagesUrl: z.array(z.string()).optional(),
 })
 
+const educationSchema = z.object({
+  id: z.number(),
+  title: z.string(),
+  institution: z.string().optional(),
+  startDate: z.string(),
+  endDate: z.string().optional(),
+  description: z.array(z.string()).optional(),
+})
+
 const experienceEs = defineCollection({
   loader: file("src/content/experience-es.json"),
   schema: experienceSchema,
@@ -49,9 +58,21 @@ export const projectsEn = defineCollection({
   schema: projectsSchema,
 });
 
+export const educationEs = defineCollection({
+  loader: file("src/content/education-es.json"),
+  schema: educationSchema,
+});
+
+export const educationEn = defineCollection({
+  loader: file("src/content/education-en.json"),
+  schema: educationSchema,
+});
+
 export const collections = {
   'experience-es': experienceEs,
   'experience-en': experienceEn,
   'projects-es': projectsEs,
   'projects-en': projectsEn,
+  'education-es': educationEs,
+  'education-en': educationEn,
 };
