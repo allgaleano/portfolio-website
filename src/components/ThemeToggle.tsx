@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Button } from "./ui/button";
-import { ChevronDown, Monitor, Moon, Sun } from "lucide-react";
+import { Monitor, Moon, Sun } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 type Theme = 'light' | 'dark' | 'auto';
