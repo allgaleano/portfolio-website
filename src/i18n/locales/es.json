@@ -26,5 +26,19 @@
   "projects.title": "Proyectos",
   "projects.present" : "En desarrollo",
 
-  "education.title": "Educación"
+  "education.title": "Educación",
+  
+  "contact.title": "Contacto",
+  "contact.nameRequired": "El nombre es obligatorio",
+  "contact.invalidEmail": "Correo electrónico no válido",
+  "contact.subjectRequired": "El asunto es obligatorio",
+  "contact.messageRequired": "El mensaje es obligatorio",
+  "contact.success": "Mensaje enviado con éxito",
+  "contact.error": "Error al enviar el mensaje, por favor inténtalo de nuevo más tarde.",
+  "contact.form.name": "Nombre",
+  "contact.form.email": "Correo electrónico",
+  "contact.form.phone": "Teléfono",
+  "contact.form.subject": "Asunto",
+  "contact.form.message": "Mensaje",
+  "contact.form.submit": "Enviar"
 }

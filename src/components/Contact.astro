@@ -1,0 +1,14 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import Section from "@/layouts/Section.astro";
+import SectionTitle from "./SectionTitle.astro";
+import ContactForm from "./ContactForm";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Section id={t('nav.contact')}>
+  <SectionTitle title={t('contact.title')} />
+  <ContactForm t={t} client:load/>
+</Section>
