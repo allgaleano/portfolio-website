@@ -4,20 +4,36 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
+import { Loader, LoaderCircle } from "lucide-react";
 
 interface ContactFormProps {
-  t: (key: TranslationKey) => string;
+  translations: {
+    nameRequired: string;
+    invalidEmail: string;
+    subjectRequired: string;
+    messageRequired: string;
+    labels: {
+      name: string;
+      email: string;
+      phone: string;
+      subject: string;
+      message: string;
+    };
+    submitting: string;
+    submit: string;
+  };
 }
 
-
-export default function ContactForm({ t } : ContactFormProps) {
+export default function ContactForm({ translations }: ContactFormProps) {
   
   const formSchema = z.object({
-    name: z.string().min(1, t('contact.nameRequired')),
-    email: z.string().email(t('contact.invalidEmail')),
+    name: z.string().min(1, translations.nameRequired),
+    email: z.string().email(translations.invalidEmail),
     phone: z.string().optional(),
-    subject: z.string().min(1, t('contact.subjectRequired')),
-    message: z.string().min(1, t('contact.messageRequired')),
+    subject: z.string().min(1, translations.subjectRequired),
+    message: z.string().min(1, translations.messageRequired),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -36,8 +52,10 @@ export default function ContactForm({ t } : ContactFormProps) {
     console.log("Form submitted:", data);
   }
 
+  const submitting = form.formState.isSubmitting;
+
   return (
-    <div>
+    <div className="p-8 bg-background border rounded-lg">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField 
@@ -45,30 +63,91 @@ export default function ContactForm({ t } : ContactFormProps) {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('contact.form.name')}</FormLabel>
+                <div className="flex items-center gap-2 h-6">
+                  <FormLabel className="whitespace-nowrap">{translations.labels.name}</FormLabel>
+                  <FormMessage />
+                </div>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={submitting} />
                 </FormControl>
-                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField 
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="flex-1">
+                  <div className="flex items-center gap-2 h-6">
+                    <FormLabel className="whitespace-nowrap">{translations.labels.email}</FormLabel>
+                    <FormMessage />
+                  </div>
+                  <FormControl>
+                    <Input {...field} disabled={submitting} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField 
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem className="flex-1">
+                  <div className="flex items-center gap-2 h-6">
+                    <FormLabel className="whitespace-nowrap">{translations.labels.phone}</FormLabel>
+                    <FormMessage />
+                  </div>
+                  <FormControl>
+                    <Input {...field} disabled={submitting} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+          </div>
+          <FormField 
+            control={form.control}
+            name="subject"
+            render={({ field }) => (
+              <FormItem>
+                <div className="flex items-center gap-2 h-6">
+                  <FormLabel className="whitespace-nowrap">{translations.labels.subject}</FormLabel>
+                  <FormMessage />
+                </div>
+                <FormControl>
+                  <Input {...field} disabled={submitting} />
+                </FormControl>
               </FormItem>
             )}
           />
           <FormField 
             control={form.control}
-            name="email"
+            name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('contact.form.email')}</FormLabel>
+                <div className="flex items-center gap-2 h-6">
+                  <FormLabel className="whitespace-nowrap">{translations.labels.message}</FormLabel>
+                  <FormMessage />
+                </div>
                 <FormControl>
-                  <Input {...field} />
+                  <Textarea {...field} disabled={submitting} className="min-h-24"/>
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
+          <Button variant="outline" className="self-end" disabled={submitting} type="submit">
+            {submitting ? (
+              <span>
+                <LoaderCircle className="animate-spin"/>
+                {translations.submitting}
+              </span>
+            ) : (
+              <span>
+                {translations.submit}
+              </span>
+            )}
+          </Button>
         </form>
-
-        
       </Form>
     </div>
   )

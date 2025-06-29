@@ -29,6 +29,7 @@
   "education.title": "Education",
 
   "contact.title": "Contact",
+  "contact.subtitle": "Do you have any questions or want to collaborate? Send me a message!",
   "contact.nameRequired": "Name is required",
   "contact.invalidEmail": "Invalid email address",
   "contact.subjectRequired": "Subject is required",
@@ -39,5 +40,6 @@
   "contact.form.phone": "Phone",
   "contact.form.subject": "Subject",
   "contact.form.message": "Message",
-  "contact.form.submit": "Send"
+  "contact.form.submit": "Send",
+  "contact.form.submitting": "Sending..."
 }

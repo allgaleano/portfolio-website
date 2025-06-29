@@ -6,9 +6,28 @@ import ContactForm from "./ContactForm";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const translations = {
+  nameRequired: t('contact.nameRequired'),
+  invalidEmail: t('contact.invalidEmail'),
+  subjectRequired: t('contact.subjectRequired'),
+  messageRequired: t('contact.messageRequired'),
+  labels: {
+    name: t('contact.form.name'),
+    email: t('contact.form.email'),
+    phone: t('contact.form.phone'),
+    subject: t('contact.form.subject'),
+    message: t('contact.form.message'),
+  },
+  submitting: t('contact.form.submitting'),
+  submit: t('contact.form.submit'),
+};
 ---
 
 <Section id={t('nav.contact')}>
-  <SectionTitle title={t('contact.title')} />
-  <ContactForm t={t} client:load/>
+  <div class="flex flex-col gap-2">
+    <SectionTitle title={t('contact.title')} />
+    <p class="text-muted-foreground">{t('contact.subtitle')}</p>
+  </div>
+  <ContactForm translations={translations} client:load/>
 </Section>
