@@ -1,0 +1,24 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "zip -r lambda-function.zip . -x 'node_modules/.pnpm/*' '*.zip'",
+    "dev": "email dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.3",
+  "devDependencies": {
+    "react-email": "4.0.17"
+  },
+  "dependencies": {
+    "@react-email/components": "0.1.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "resend": "^4.6.0"
+  }
+}
