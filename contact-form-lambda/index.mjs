@@ -4,13 +4,6 @@ import { generateSubmissionEmail } from "./emails/submission-template.mjs";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const headers = {
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': process.env.CORS_ORIGIN || '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS'
-};
-
 // Email validation
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,7 +15,6 @@ export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
-      headers,
       body: '',
     };
   }
@@ -41,7 +33,6 @@ export const handler = async (event) => {
     if (!name || !email || !subject || !message) {
       return {
         statusCode: 400,
-        headers,
         body: JSON.stringify({
           error: 'Missing required fields: name, email, subject, and message are required'
         }),
@@ -51,7 +42,6 @@ export const handler = async (event) => {
     if (!validateEmail(email)) {
       return {
         statusCode: 400,
-        headers,
         body: JSON.stringify({
           error: 'Invalid email format'
         }),
@@ -95,7 +85,6 @@ export const handler = async (event) => {
 
     return {
       statusCode: 200,
-      headers,
       body: JSON.stringify({
         message: 'Emails sent successfully',
         submissionId: submissionEmailResult.data?.id,
@@ -113,7 +102,6 @@ export const handler = async (event) => {
     
     return {
       statusCode: 500,
-      headers,
       body: JSON.stringify({
         error: 'Failed to send emails',
         details: errorMessage,

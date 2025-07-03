@@ -41,5 +41,8 @@
   "contact.form.subject": "Subject",
   "contact.form.message": "Message",
   "contact.form.submit": "Send",
-  "contact.form.submitting": "Sending..."
+  "contact.form.submitting": "Sending...",
+  "contact.form.unexpectedError": "Unexpected error, please try again later.",
+  "contact.form.invalidFormat": "Invalid format, please check the fields.",
+  "contact.form.successMessage": "Your message has been sent successfully!"
 }

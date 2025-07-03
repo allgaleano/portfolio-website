@@ -6,7 +6,8 @@
   "main": "index.mjs",
   "scripts": {
     "dev": "email dev",
-    "build": "mkdir -p dist && esbuild index.mjs --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.mjs --minify"
+    "build": "mkdir -p dist && esbuild index.mjs --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.mjs --minify",
+    "package": "rm -r dist/ && pnpm build && cd dist/ && zip ../contact-form-lambda.zip index.mjs && cd .."
   },
   "keywords": [],
   "author": "",

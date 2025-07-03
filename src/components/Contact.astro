@@ -21,6 +21,9 @@ const translations = {
   },
   submitting: t('contact.form.submitting'),
   submit: t('contact.form.submit'),
+  unexpectedError: t('contact.form.unexpectedError'),
+  invalidFormat: t('contact.form.invalidFormat'),
+  successMessage: t('contact.form.successMessage')
 };
 ---
 
@@ -29,5 +32,5 @@ const translations = {
     <SectionTitle title={t('contact.title')} />
     <p class="text-muted-foreground">{t('contact.subtitle')}</p>
   </div>
-  <ContactForm translations={translations} client:load/>
+  <ContactForm translations={translations} lang={lang} client:load/>
 </Section>
