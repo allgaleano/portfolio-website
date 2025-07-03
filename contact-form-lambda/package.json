@@ -1,24 +1,22 @@
 {
   "name": "lambda",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "zip -r lambda-function.zip . -x 'node_modules/.pnpm/*' '*.zip'",
-    "dev": "email dev"
+    "dev": "email dev",
+    "build": "mkdir -p dist && esbuild index.mjs --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.mjs --minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.6.3",
   "devDependencies": {
-    "react-email": "4.0.17"
+    "dotenv": "^17.0.1",
+    "esbuild": "^0.25.5"
   },
   "dependencies": {
-    "@react-email/components": "0.1.1",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
     "resend": "^4.6.0"
   }
 }
