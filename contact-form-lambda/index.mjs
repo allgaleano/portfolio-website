@@ -3,11 +3,32 @@ import { generateResponseEmail } from "./emails/response-template.mjs";
 import { generateSubmissionEmail } from "./emails/submission-template.mjs";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET;
+const HCAPTCHA_VERIFY_URL = 'https://api.hcaptcha.com/siteverify';
+
 
 // Email validation
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+};
+
+const verifyHCaptcha = async (token) => {
+  try {
+    const response = await fetch(HCAPTCHA_VERIFY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `response=${token}&secret=${HCAPTCHA_SECRET}`,
+    });
+
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error('hCaptcha verification error:', error);
+    return false;
+  }
 };
 
 export const handler = async (event) => {
@@ -27,7 +48,7 @@ export const handler = async (event) => {
       body = event.body;
     }
   
-    const { name, email, phone, subject, message, lang = 'en' } = body;
+    const { name, email, phone, subject, message, lang = 'en', captchaToken } = body;
   
     // Validation
     if (!name || !email || !subject || !message) {
@@ -44,6 +65,26 @@ export const handler = async (event) => {
         statusCode: 400,
         body: JSON.stringify({
           error: 'Invalid email format'
+        }),
+      };
+    }
+
+    if (!captchaToken) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          error: 'Missing captcha token'
+        }),
+      };
+    }
+
+    const captchaValid = await verifyHCaptcha(captchaToken);
+
+    if (!captchaValid) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          error: 'Invalid captcha verification'
         }),
       };
     }
