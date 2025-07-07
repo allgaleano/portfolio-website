@@ -29,7 +29,7 @@
   "education.title": "Educación",
   
   "contact.title": "Contacto",
-  "contact.subtitle": "¿Tienes alguna pregunta o quieres colaborar? ¡Envíame un mensaje!",
+  "contact.subtitle": "¿Tienes alguna pregunta o quieres colaborar? ¡Envíame un mensaje a través de este formulario! o envíame un correo a: ",
   "contact.nameRequired": "El nombre es obligatorio",
   "contact.invalidEmail": "Correo electrónico no válido",
   "contact.subjectRequired": "El asunto es obligatorio",

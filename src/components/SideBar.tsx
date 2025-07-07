@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 interface SideBarProps {
   pages: {
@@ -26,6 +26,8 @@ export default function SideBar({ pages }: SideBarProps) {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="dark:bg-background/50 dark:backdrop-blur-3xl">
+        <SheetTitle />
+        <SheetDescription />
         <nav className="flex flex-col justify-center text-lg gap-12 text-muted-foreground h-full p-16">
           {pages.map((page) => (
             <a

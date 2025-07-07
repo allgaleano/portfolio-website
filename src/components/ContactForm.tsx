@@ -5,8 +5,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { CheckCircle2, LoaderCircle } from "lucide-react";
-import { useState } from "react";
+import { AlertCircle, CheckCircle2, LoaderCircle } from "lucide-react";
+import { useRef, useState } from "react";
 import { Alert, AlertDescription } from "./ui/alert";
 
 const LAMBDA_URL = import.meta.env.PUBLIC_LAMBDA_URL;
@@ -28,7 +28,7 @@ interface ContactFormProps {
     submit: string;
     unexpectedError: string;
     invalidFormat: string;
-    successMessage?: string;
+    successMessage: string;
   };
   lang: 'en' | 'es';
 }
@@ -70,7 +70,7 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
         },
         body: JSON.stringify({
           ...data,
-          lang
+          lang,
         })
       });
 
@@ -188,7 +188,7 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
           )}
           {submitStatus === 'error' && (
             <Alert className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/60">
-              <CheckCircle2 className="h-4 w-4 text-red-600 dark:text-red-400" />
+              <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
               <AlertDescription className="text-red-800 dark:text-red-200">
                 {errorDetails}
               </AlertDescription>

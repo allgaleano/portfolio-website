@@ -30,7 +30,10 @@ const translations = {
 <Section id={t('nav.contact')}>
   <div class="flex flex-col gap-2">
     <SectionTitle title={t('contact.title')} />
-    <p class="text-muted-foreground">{t('contact.subtitle')}</p>
+    <p class="text-muted-foreground">
+      {t('contact.subtitle')}
+      <a href="mailto:all.galeano.diaz@gmail.com" class="text-white underline">galeano.diaz.alberto@gmail.com</a>
+    </p>
   </div>
   <ContactForm translations={translations} lang={lang} client:load/>
 </Section>
