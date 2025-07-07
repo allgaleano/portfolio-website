@@ -8,8 +8,11 @@ import { Button } from "./ui/button";
 import { AlertCircle, CheckCircle2, LoaderCircle } from "lucide-react";
 import { useRef, useState } from "react";
 import { Alert, AlertDescription } from "./ui/alert";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useTheme } from "@/hooks/useTheme";
 
 const LAMBDA_URL = import.meta.env.PUBLIC_LAMBDA_URL;
+const HCAPTCHA_SITE_KEY = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY;
 
 interface ContactFormProps {
   translations: {
@@ -29,6 +32,8 @@ interface ContactFormProps {
     unexpectedError: string;
     invalidFormat: string;
     successMessage: string;
+    captchaRequired: string;
+    captchaError: string;
   };
   lang: 'en' | 'es';
 }
@@ -37,6 +42,10 @@ interface ContactFormProps {
 export default function ContactForm({ translations, lang }: ContactFormProps) {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorDetails, setErrorDetails] = useState<string>('');
+  const [captchaToken, setCaptchaToken] = useState<string>('');
+  const captchaRef = useRef<HCaptcha>(null);
+
+  const theme = useTheme();
   
   const formSchema = z.object({
     name: z.string().min(1, translations.nameRequired),
@@ -56,11 +65,25 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
       message: ''
     }
   });
+  const onCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token || '');
+  };
 
+  const onCaptchaExpire = () => {
+    setCaptchaToken('');
+  };
+  
   async function onSubmit(data: z.infer<typeof formSchema>) {
+
+    if (!captchaToken) {
+      setSubmitStatus('error');
+      setErrorDetails(translations.captchaRequired);
+      return;
+    }
+
     setSubmitStatus('idle');
     setErrorDetails('');
-
+    
     try {
 
       const response = await fetch(LAMBDA_URL, {
@@ -71,15 +94,25 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
         body: JSON.stringify({
           ...data,
           lang,
+          captchaToken,
         })
       });
 
       if (response.ok) {
         form.reset(); 
+        setCaptchaToken('');
+        captchaRef.current?.resetCaptcha();
         setSubmitStatus('success');
       } else if(response.status === 400) {
+        const errorData = await response.json();
+
         setSubmitStatus('error');
-        setErrorDetails(translations.invalidFormat);
+
+        if (errorData.error && errorData.error.includes('captcha')) {
+          setErrorDetails(translations.captchaError);
+        } else {
+          setErrorDetails(translations.invalidFormat);
+        }
       } else {
         setSubmitStatus('error');
         setErrorDetails(translations.unexpectedError);
@@ -178,6 +211,16 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
               </FormItem>
             )}
           />
+
+          <HCaptcha
+            ref={captchaRef}
+            sitekey={HCAPTCHA_SITE_KEY}
+            onVerify={onCaptchaChange}
+            onExpire={onCaptchaExpire}
+            languageOverride={lang}
+            theme={theme}
+          />
+
           {submitStatus === 'success' && (
             <Alert className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
               <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />

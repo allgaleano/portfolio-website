@@ -45,5 +45,7 @@
   "contact.form.submitting": "Enviando...",
   "contact.form.unexpectedError": "Error inesperado, por favor inténtalo de nuevo más tarde.",
   "contact.form.invalidFormat": "Formato no válido, por favor revisa los campos.",
-  "contact.form.successMessage": "¡Tu mensaje ha sido enviado con éxito!"
+  "contact.form.successMessage": "¡Tu mensaje ha sido enviado con éxito!",
+  "contact.form.captchaRequired": "Por favor completa el captcha antes de enviar el formulario.",
+  "contact.form.captchaError": "La verificación del captcha falló, por favor inténtalo de nuevo."
 }
