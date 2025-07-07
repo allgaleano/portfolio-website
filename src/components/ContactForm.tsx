@@ -133,7 +133,7 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
   return (
     <div className="p-8 bg-background border rounded-lg">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
           <FormField 
             control={form.control}
             name="name"
@@ -212,14 +212,17 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
             )}
           />
 
-          <HCaptcha
-            ref={captchaRef}
-            sitekey={HCAPTCHA_SITE_KEY}
-            onVerify={onCaptchaChange}
-            onExpire={onCaptchaExpire}
-            languageOverride={lang}
-            theme={theme}
-          />
+          <div className="scale-70 sm:scale-90 self-start -ml-11 sm:-ml-4">
+            <HCaptcha
+              ref={captchaRef}
+              sitekey={HCAPTCHA_SITE_KEY}
+              onVerify={onCaptchaChange}
+              onExpire={onCaptchaExpire}
+              languageOverride={lang}
+              theme={theme}
+            />
+
+          </div>
 
           {submitStatus === 'success' && (
             <Alert className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
@@ -237,7 +240,7 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
               </AlertDescription>
             </Alert>
           )}
-          <Button variant="outline" className="self-end" disabled={submitting} type="submit">
+          <Button variant="outline" className="self-start" disabled={submitting} type="submit">
             {submitting ? (
               <span className="flex items-center gap-2">
                 <LoaderCircle className="animate-spin"/>
