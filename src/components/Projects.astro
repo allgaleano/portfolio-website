@@ -56,7 +56,7 @@ const sortedProjects: CollectionEntry<typeof collectionName>[] = sortProjectsByD
                     </div>
                   )}
                   {project.data.githubUrl ? (
-                    <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-full border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-background dark:border-input dark:hover:bg-muted [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 h-8 px-3 has-[>svg]:px-2.5">
+                    <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-full border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-background dark:border-input dark:hover:bg-muted [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 h-8 px-3 has-[>svg]:px-2.5" aria-label="GitHub repository" >
                       <FaGithub client:load />
                       <ExternalLink client:load />
                     </a>
@@ -83,12 +83,12 @@ const sortedProjects: CollectionEntry<typeof collectionName>[] = sortProjectsByD
             {project.data.description && project.data.description.length > 0 && (
               <ul class="relative space-y-2 text-sm text-foreground/70">
                 {project.data.description.map((item: string) => (
-                  <div class="flex items-baseline leading-6 gap-2">
+                  <li class="flex items-baseline leading-6 gap-2">
                     <span class="size-2 border-2 border-primary rounded-full flex-shrink-0" />
-                    <li>
+                    <p>
                       {item}
-                    </li>
-                  </div>
+                    </p>
+                  </li>
                 ))}
               </ul>
             )}

@@ -68,12 +68,12 @@ const sortedExperiences: CollectionEntry<typeof collectionName>[] = sortExperien
               {experience.data.description && experience.data.description.length > 0 && (
                 <ul class="relative space-y-2 text-sm text-foreground/80">
                   {experience.data.description.map((item: string) => (
-                    <div class="flex items-baseline gap-2 leading-6">
+                    <li class="flex items-baseline gap-2 leading-6">
                       <span class="size-2 border-2 border-primary rounded-full flex-shrink-0" />
-                      <li>
+                      <p>
                         {item}
-                      </li>
-                    </div>
+                      </p>
+                    </li>
                   ))}
                 </ul>
               )}

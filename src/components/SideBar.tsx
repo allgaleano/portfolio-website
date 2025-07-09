@@ -19,6 +19,7 @@ export default function SideBar({ pages }: SideBarProps) {
           variant="ghost"
           size="icon"
           className="md:hidden flex flex-col items-center gap-[6px] p-1"
+          aria-label="Toggle navigation"
         >
             {Array.from({ length: 3 }, (_, i) => (
             <span key={i} className="w-full h-[2px] bg-muted-foreground rounded-full"></span>

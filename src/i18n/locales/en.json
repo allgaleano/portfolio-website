@@ -1,5 +1,6 @@
 {
   "main.layout.title": "Alberto Galeano",
+  "main.layout.description": "Backend developer specialized in Java and Spring Boot, with experience across complementary areas including frontend development, database management, and DevOps practices.",
   "hero.title": "Alberto Galeano",
   "hero.subtitle": "Software Engineer",
   "hero.description": "Backend developer specialized in Java and Spring Boot, with experience across complementary areas including frontend development, database management, and DevOps practices.",
@@ -46,5 +47,7 @@
   "contact.form.invalidFormat": "Invalid format, please check the fields.",
   "contact.form.successMessage": "Your message has been sent successfully!",
   "contact.form.captchaRequired": "Please complete the captcha before submitting the form.",
-  "contact.form.captchaError": "Captcha verification failed, please try again."
+  "contact.form.captchaError": "Captcha verification failed, please try again.",
+  "contact.form.captchaLoading": "Loading captcha...",
+  "contact.form.captchaFailed": "Error loading captcha. Please refresh the page."
 }

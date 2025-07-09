@@ -34,6 +34,8 @@ interface ContactFormProps {
     successMessage: string;
     captchaRequired: string;
     captchaError: string;
+    captchaLoading: string;
+    captchaFailed: string;
   };
   lang: 'en' | 'es';
 }
@@ -42,6 +44,8 @@ interface ContactFormProps {
 export default function ContactForm({ translations, lang }: ContactFormProps) {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorDetails, setErrorDetails] = useState<string>('');
+  const [captchaLoaded, setCaptchaLoaded] = useState<boolean>(false);
+  const [captchaError, setCaptchaError] = useState<boolean>(false);
   const [captchaToken, setCaptchaToken] = useState<string>('');
   const captchaRef = useRef<HCaptcha>(null);
 
@@ -73,6 +77,16 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
     setCaptchaToken('');
   };
   
+  const onCaptchaLoad = () => {
+    setCaptchaLoaded(true);
+    setCaptchaError(false);
+  };
+
+  const onCaptchaError = () => {
+    setCaptchaLoaded(false);
+    setCaptchaError(true);
+  };
+
   async function onSubmit(data: z.infer<typeof formSchema>) {
 
     if (!captchaToken) {
@@ -212,16 +226,40 @@ export default function ContactForm({ translations, lang }: ContactFormProps) {
             )}
           />
 
-          <div className="scale-70 sm:scale-90 self-start -ml-11 sm:-ml-4">
-            <HCaptcha
-              ref={captchaRef}
-              sitekey={HCAPTCHA_SITE_KEY}
-              onVerify={onCaptchaChange}
-              onExpire={onCaptchaExpire}
-              languageOverride={lang}
-              theme={theme}
-            />
+          {/* Loading state for captcha */}
+          {!captchaLoaded && !captchaError && (
+            <div className="flex items-center gap-2 p-4 border bg-input/50 rounded w-fit text-muted-foreground">
+              <LoaderCircle className="h-4 w-4 animate-spin" />
+              <span className="text-sm">
+                {translations.captchaLoading}
+              </span>
+            </div>
+          )}
+          {/* Error state for captcha */}
+          {captchaError && (
+            <div className="flex items-center gap-2 p-4 border w-fit border-destructive/50 rounded bg-destructive/5 dark:bg-destructive/10 text-destructive">
+              <AlertCircle className="h-4 w-4 " />
+              <span className="text-sm ">
+                {translations.captchaFailed}
+              </span>
+            </div>
+          )}
+          <div className="scale-70 sm:scale-90 self-start -ml-11 sm:-ml-4 relative">
+            
 
+            {/* HCaptcha component */}
+            <div className={captchaLoaded ? 'block' : 'hidden'}>
+              <HCaptcha
+                ref={captchaRef}
+                sitekey={HCAPTCHA_SITE_KEY}
+                onVerify={onCaptchaChange}
+                onExpire={onCaptchaExpire}
+                onLoad={onCaptchaLoad}
+                onError={onCaptchaError}
+                languageOverride={lang}
+                theme={theme}
+              />
+            </div>
           </div>
 
           {submitStatus === 'success' && (

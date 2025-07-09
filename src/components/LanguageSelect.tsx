@@ -1,5 +1,6 @@
 import { Languages } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Button } from "./ui/button";
 
 interface LanguageOption {
   value: string;
@@ -22,14 +23,14 @@ export default function LanguageSelect({ currentLang, options }: LanguageSelectP
 
   return (
     <Select value={currentLang} onValueChange={handleLanguageChange}>
-      <SelectTrigger >
+      <SelectTrigger aria-label="Language Select">
         <SelectValue>
           <Languages className="text-foreground" /> <span className="hidden sm:block">{options.find(option => option.value === currentLang)?.label}</span>
         </SelectValue>
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (
-          <SelectItem key={option.value} value={option.value}>
+          <SelectItem aria-label={option.value} key={option.value} value={option.value}>
             {option.label}
           </SelectItem>
         ))}

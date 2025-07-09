@@ -1,20 +1,53 @@
 ---
 import "../styles/global.css";
 import { getLangFromUrl } from "../i18n/utils";
+import { SEO } from "astro-seo";
+import portrait from "../assets/portrait-optimized.webp";
 
-const { title } = Astro.props;
+export interface Props {
+  title: string;
+  description: string;
+  image?: string; 
+}
+
+const { title, description, image } : Props = Astro.props;
 const lang = getLangFromUrl(Astro.url);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
 ---
 <!doctype html>
 <html lang={lang}>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-		<title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+      <link rel="preload" as="image" href={portrait.src} fetchpriority="high">
+
+		<SEO
+      title={title}
+      description={description}
+      canonical={canonicalURL}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: image || "/spanish-og.jpg",
+          url: canonicalURL,
+        }
+      }}
+      extend={{
+        link: [
+          { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+          { rel: "preconnect", href: "https://fonts.googleapis.com" },
+          { rel: "preconnect", href: "https://fonts.gstatic.com" },
+          { 
+            rel: "stylesheet", 
+            href: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" 
+          },
+          { rel: "sitemap", href: "/sitemap-index.xml" },
+          { rel: "preload", as: "image", href: portrait.src }
+        ]
+      }}
+    />
     <script is:inline>
       // Initialize theme on page load to prevent flash
       (function() {

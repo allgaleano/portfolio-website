@@ -12,7 +12,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('main.layout.title')}>
+<Layout 
+  title={t('main.layout.title')}
+  description={t('main.layout.description')}
+  image="/english-og.jpg"
+>
   <Header />
   <Hero t={t} />
   <Experience />
