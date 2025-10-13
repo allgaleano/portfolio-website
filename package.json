@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy" : "aws s3 sync ./dist s3://albertogaleano.com-astro-website --delete"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",

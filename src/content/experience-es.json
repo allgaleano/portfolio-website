@@ -1,21 +1,18 @@
 [
   {
     "id" : 1,
-    "position": "Ingeniero de Software en Prácticas",
+    "position": "Ingeniero de Software",
     "company": "Accenture",
     "location": "Madrid, España",
     "startDate": "2025-02",
     "endDate": "2025-05",
     "description": [
-      "Desarrollé y documenté APIs RESTful para un software Back-Office en el sector bancario usando Java y Spring Boot dentro de una arquitectura de microservicios.",
-      "Cumplí fechas de entrega ajustadas coordinando con el equipo de frontend la integración de las distintas funcionalidades.",
-      "Pasé controles de calidad de SonarQube utilizando herramientas como JUnit y Mockito para tests unitarios.",
-      "Colaboré con equipos multidisciplinares para transformar requisitos funcionales a requisitos técnicos.",
-      "Implementé batches con Spring Batch para el procesamiento de datos masivo.",
-      "Realicé optimizaciones de base datos Oracle SQL y MongoDB."
+      "Aceleré el desarrollo del backend en 5x al entregar rápidamente endpoints RESTful usando Java Spring Boot dentro de plazos ajustados tras la cancelación del proyecto en un entorno Agile/SCRUM.",
+      "Eliminé la deuda técnica y mejoré la calidad del código en un 60% mediante la implementación de prácticas TDD, escribiendo más de 200 pruebas unitarias y resolviendo más de 150 code smells de SonarQube en toda la base de código, manteniendo cero deuda técnica durante todo el ciclo de desarrollo.",
+      "Desarrollé requisitos funcionales complejos estudiando la documentación del proyecto y manteniendo una comunicación clara con los equipos funcionales y clientes, logrando el comportamiento deseado y cumpliendo el 100% de los plazos."
     ],
     "technologies" : ["Java", "Spring Boot", "Hibernate", "Oracle SQL", "MongoDB", "Spring Batch","SonarQube", "JUnit", "Mockito"],
-    "type": "Jornada parcial"
+    "type": "Prácticas"
   },
   {
     "id" : 2,
@@ -25,9 +22,9 @@
     "startDate": "2022-10",
     "endDate": "2024-03",
     "description": [
-      "Desarrollé páginas web y realicé el mantenimiento de la infraestructura en AWS.",
-      "Migré servidores de dominio y clientes de email entre proveedores para optimizar costes y mejorar la eficiencia en el flujo de trabajo.",
-      "Diseño de productos y catálogos acudiendo a congresos para apoyar la venta de los mismos."
+      "Reduje el tiempo del ciclo de cumplimiento de pedidos en un 70% al diseñar y desplegar una aplicación CRM personalizada de extremo a extremo y un configurador de productos usando backend en Java Spring Boot y frontend en React, automatizando la generación de presupuestos, procesamiento de pedidos y flujos de trabajo de fabricación para más de 500 transacciones mensuales.",
+      "Reduje los costes de infraestructura en un 40% y mejoré la escalabilidad del sistema al migrar las aplicaciones web y servidores de dominio a la infraestructura en la nube de AWS.",
+      "Aumenté la generación de leads en un 150% al rediseñar la UI/UX del sitio web de la empresa e implementar las mejores prácticas de SEO usando frameworks modernos de JavaScript (React + Vite, Astro, Next.js), mejorando la velocidad de carga de página en un 60% y el posicionamiento en buscadores para más de 20 términos clave."
     ],
     "technologies" : ["Java", "Spring Boot", "PostgreSQL", "Redis", "AWS", "Docker", "Linux", "HTML", "CSS", "JavaScript", "TypeScript", "React"],
     "type": "Jornada parcial"
