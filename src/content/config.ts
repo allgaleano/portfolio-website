@@ -5,6 +5,8 @@ const experienceSchema = z.object({
   id: z.number(),
   position: z.string(),
   company: z.string(),
+  companyLogo: z.string(),
+  companyColor: z.string().optional(),
   location: z.string(),
   startDate: z.string(),
   endDate: z.string(),

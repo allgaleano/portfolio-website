@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import SectionTitle from "./SectionTitle.astro";
 import Section from "@/layouts/Section.astro";
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -34,12 +35,29 @@ const sortedExperiences: CollectionEntry<typeof collectionName>[] = sortExperien
               <!-- Header -->
               <div class="flex flex-col md:flex-row items-start md:justify-between gap-2">
                 <div class="flex flex-col gap-1">
-                  <h3 class="text-xl font-semibold">
-                    {experience.data.position}
-                  </h3>
-                  <p class="w-fit -ml-1 font-medium text-primary bg-primary/10 px-2 rounded-full border border-primary/30">
-                    {experience.data.company}
-                  </p>
+                  <div class="flex gap-4 flex-wrap align-middle">
+                    <h3 class="text-xl font-semibold">
+                      {experience.data.position}
+                    </h3>
+                    <div class="w-fit align-middle flex gap-1" style={experience.data.companyLogo ? `
+                      background-color: ${experience.data.companyColor}10;
+                      padding-inline: calc(var(--spacing) * 2);
+                      border-width: 1px;
+                      border-color: ${experience.data.companyColor}30;
+                      border-radius: calc(infinity * 1px);
+                      ` : ""}>
+                      <Image 
+                        src={experience.data.companyLogo}
+                        alt={`${experience.data.company} logo`}
+                        width={20}
+                        height={20}
+                        class="object-contain"
+                      />
+                      <p style={experience.data.companyColor ? `color: ${experience.data.companyColor}` : ""}>
+                        {experience.data.company}
+                      </p>
+                    </div>
+                  </div>
                   <p class="text-sm text-muted-foreground">
                     {experience.data.location}
                   </p>

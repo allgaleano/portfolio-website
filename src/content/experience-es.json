@@ -3,6 +3,8 @@
     "id" : 1,
     "position": "Ingeniero de Software",
     "company": "Accenture",
+    "companyLogo": "/images/accenture.png",
+    "companyColor" : "#A100FF",
     "location": "Madrid, España",
     "startDate": "2025-02",
     "endDate": "2025-05",
@@ -16,8 +18,10 @@
   },
   {
     "id" : 2,
-    "position": "Desarrollador Web",
+    "position": "Desarrollador Full-Stack",
     "company": "Motion & Balance",
+    "companyLogo" : "/images/motionbalance.png",
+    "companyColor" : "#00A7CF",
     "location": "Remoto",
     "startDate": "2022-10",
     "endDate": "2024-03",
@@ -28,5 +32,18 @@
     ],
     "technologies" : ["Java", "Spring Boot", "PostgreSQL", "Redis", "AWS", "Docker", "Linux", "HTML", "CSS", "JavaScript", "TypeScript", "React"],
     "type": "Jornada parcial"
+  },
+  {
+    "id" : 3,
+    "position": "Ingeniero de Software II",
+    "company": "Solera Holdings, LLC.",
+    "companyLogo" : "/images/solera.webp",
+    "companyColor" : "#b14ae1",
+    "location": "Madrid, España",
+    "startDate": "2025-11",
+    "endDate": "present",
+    "description": [],
+    "technologies" : ["Java", "Spring Boot", "JavaScript", "React"],
+    "type": "Jornada completa"
   }
 ]

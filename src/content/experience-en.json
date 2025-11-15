@@ -3,6 +3,8 @@
     "id" : 1,
     "position": "Software Engineer",
     "company": "Accenture",
+    "companyLogo": "/images/accenture.png",
+    "companyColor" : "#A100FF",
     "location": "Madrid, Spain",
     "startDate": "2025-02",
     "endDate": "2025-05",
@@ -18,6 +20,8 @@
     "id" : 2,
     "position": "Full-Stack Developer",
     "company": "Motion & Balance",
+    "companyLogo" : "/images/motionbalance.png",
+    "companyColor" : "#00A7CF",
     "location": "Remote",
     "startDate": "2022-10",
     "endDate": "2024-03",
@@ -28,5 +32,18 @@
     ],
     "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
     "type": "Part-time"
+  },
+  {
+    "id" : 3,
+    "position": "Software Development Engineer II",
+    "company": "Solera Holdings, LLC.",
+    "companyLogo" : "/images/solera.webp",
+    "companyColor" : "#b14ae1",
+    "location": "Madrid, Spain",
+    "startDate": "2025-11",
+    "endDate": "present",
+    "description": [],
+    "technologies" : ["Java", "Spring Boot", "JavaScript", "React"],
+    "type": "Full-time"
   }
 ]
