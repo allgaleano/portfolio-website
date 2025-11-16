@@ -26,6 +26,9 @@ jobs:
 
       - name: Build Astro site
         run: npm run build
+        env:
+          PUBLIC_LAMBDA_URL: ${{ secrets.PUBLIC_LAMBDA_URL }}
+          PUBLIC_HCAPTCHA_SITE_KEY: ${{ secrets.PUBLIC_HCAPTCHA_SITE_KEY }}
 
       - name: Upload build artifacts
         if: github.event_name == 'push'
