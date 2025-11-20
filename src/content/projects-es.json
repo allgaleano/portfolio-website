@@ -7,7 +7,7 @@
     "endDate" : "present",
     "description" : [
       "Software configurador de productos y CRM personalizado para la empresa Motion & Balance encargado de la automatización del flujo de trabajo principal.",
-      "Java y Spring Boot para el backend con modelo EAV (Entity Attribute Value) en la base de datos PostgreSQL para la configuración flexible e historificación de productos.",
+      "Java y Spring Boot para el backend base de datos PostgreSQL con JSONB para la configuración flexible e historificación de productos.",
       "Gestión de accesos con RBAC (Role Based Access Control) implementada con Spring Security y autenticación basada en tokens combinando Spring Session con Redis.",
       "React con TypeScript y Vite para el frontend manejando enrutamiento y gestión del estado global y datos asíncronos con librerías de TanStack.",
       "Desarrollo ágil SCRUM y medición de ratios de productividad (Ej. 120 líneas de código/hora)."
@@ -23,51 +23,6 @@
       "/images/insole360_homescreen.webp",
       "/images/insole360_organizations.webp",
       "/images/insole360_security.webp"
-    ]
-  },
-  {
-    "id": 2,
-    "title" : "Aplicación Web de gestión de torneos de tenis",
-    "name" : "MatchPoint",
-    "startDate" : "2024-09",
-    "endDate" : "2024-12",
-    "description" : [
-      "Aplicación para la gestión de torneos de tenis, con configuración de torneos y gestión de inscripciones a torneos, automatizando el emparejamiento de jugadores y recopilando estadísticas por torneo y jugador.",
-      "Implementada con Java y Spring Boot para el backend con React, Typescript y Next.js para el frontend y PostgreSQL como base de datos.",
-      "Tests unitarios con JUnit y Mockito y tests de integración con MockMVC."
-    ],
-    "technologies" : ["Java", "Spring Boot", "PostgreSQL", "React", "TypeScript", "Next.js", "JUnit", "Mockito"],
-    "githubUrl" : "https://github.com/allgaleano/tennis-tournament-manager",
-    "videosUrl" : [
-      {
-        "mp4" : "/videos/MatchPoint_Overview.mp4",
-        "webm" : "/videos/MatchPoint_Overview.webm"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title" : "API de red social de vinos",
-    "startDate" : "2024-03",
-    "endDate" : "2024-04",
-    "description" : [
-      "Implementé una API REST con JAX-RS y MySQL server, paginación manual con opciones de navegación y filtrado, adicionalmente desarrollé un cliente CLI con Java para probar la API de forma dinámica."
-    ],
-    "technologies" : ["Java", "JAX-RS", "MySQL"],
-    "githubUrl" : "https://github.com/allgaleano/Wines-Rating-API-Rest"
-  },
-  {
-    "id": 4,
-    "title" : "Aplicación Web del metro de Lyon",
-    "startDate" : "2023-10",
-    "endDate" : "2023-12",
-    "description" : [
-      "Desarrollé una aplicación web que emplea el algoritmo A* para cálculo de rutas con estimaciones heurísticas en el metro de Lyon. Implementada con Node.js y Next.js."
-    ],
-    "technologies" : ["Node.js", "Next.js", "JavaScript"],
-    "githubUrl" : "https://github.com/allgaleano/NodeMetroLyon",
-    "imagesUrl" : [
-      "/images/metro-lyon.webp"
     ]
   }
 ]
