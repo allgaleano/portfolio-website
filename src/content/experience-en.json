@@ -9,9 +9,9 @@
     "startDate": "2025-02",
     "endDate": "2025-05",
     "description": [
-      "Accelerated backend development by 5x by rapidly delivering RESTful endpoints using Java Spring Boot within tight deadlines after project cancellation in an Agile/SCRUM environment.",
+      "Accelerated backend development by 5x for banking back-office application, rapidly delivering RESTful endpoints using Java Spring Boot within tight deadlines after project cancellation in an Agile/SCRUM environment.",
       "Eliminated technical debt and improved code quality by 60% by implementing TDD practices, writing 200+ unit tests, and resolving 150+ SonarQube code smells across the codebase, maintaining zero technical debt throughout development cycle.",
-      "Developed complex functional requirements by studying project documentation and maintaining clear communication with functional teams and clients, achieving desired behavior and meeting 100% of deadlines."
+      "Demonstrated rapid onboarding capabilities by achieving full integration into development team within 30 days through comprehensive documentation review and proactive contribution beyond intern-level responsibilities."
     ],
     "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
     "type": "Internship"
@@ -26,9 +26,8 @@
     "startDate": "2022-10",
     "endDate": "2024-03",
     "description": [
-      "Reduced order fulfillment cycle time by 70% by architecting and deploying a custom end-to-end CRM and product configurator application using Java Spring Boot backend and React frontend, automating quote generation, order processing, and manufacturing workflows for 500+ monthly transactions.",
-      "Cut infrastructure costs by 40% and improved system scalability by migrating web applications and domain servers to AWS cloud infrastructure.",
-      "Increased lead generation by 150% by redesigning company website UI/UX and implementing SEO best practices using modern JavaScript frameworks (React + Vite, Astro, Next.js), improving page load speed by 60% and search engine rankings for 20+ key terms."
+      "Reduced order fulfillment cycle time by 90% by architecting and deploying a custom end-to-end CRM and product configurator application using Java Spring Boot backend and React frontend, automating quote generation, order processing, and manufacturing workflows.",
+      "Cut infrastructure costs by 93% and improved system scalability by migrating web applications and domain servers to AWS cloud infrastructure."
     ],
     "technologies" : ["Java", "Spring Boot", "Angular", "AWS", "Docker"],
     "type": "Part-time"
@@ -42,7 +41,11 @@
     "location": "Madrid, Spain",
     "startDate": "2025-11",
     "endDate": "present",
-    "description": [],
+    "description": [
+      "Executed microservices migration from legacy monolithic application, refactoring Java backend services and React frontend components to distributed architecture while maintaining 100% feature parity for high-traffic application serving 25,000 requests per minute",
+      "Collaborated cross-functionally in Agile/Scrum environment with development teams, product owners, and QA engineers to deliver sprint commitments and maintain continuous integration/continuous deployment (CI/CD) pipelines.",
+      "Performed root cause analysis and resolved critical production issues in enterprise-scale codebase, improving system reliability."
+    ],
     "technologies" : ["Java", "Spring Boot", "JavaScript", "React"],
     "type": "Full-time"
   }

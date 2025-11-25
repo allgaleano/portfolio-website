@@ -9,9 +9,9 @@
     "startDate": "2025-02",
     "endDate": "2025-05",
     "description": [
-      "Aceleré el desarrollo del backend en 5x al entregar rápidamente endpoints RESTful usando Java Spring Boot dentro de plazos ajustados tras la cancelación del proyecto en un entorno Agile/SCRUM.",
-      "Eliminé la deuda técnica y mejoré la calidad del código en un 60% mediante la implementación de prácticas TDD, escribiendo más de 200 pruebas unitarias y resolviendo más de 150 code smells de SonarQube en toda la base de código, manteniendo cero deuda técnica durante todo el ciclo de desarrollo.",
-      "Desarrollé requisitos funcionales complejos estudiando la documentación del proyecto y manteniendo una comunicación clara con los equipos funcionales y clientes, logrando el comportamiento deseado y cumpliendo el 100% de los plazos."
+      "Aceleré el desarrollo backend en 5x para una aplicación bancaria de back-office, entregando rápidamente endpoints RESTful usando Java Spring Boot dentro de plazos ajustados tras la cancelación del proyecto en un entorno Agile/SCRUM.",
+      "Eliminé la deuda técnica y mejoré la calidad del código en un 60% implementando prácticas TDD, escribiendo más de 200 tests unitarios y resolviendo más de 150 code smells de SonarQube en todo el código base, manteniendo cero deuda técnica durante todo el ciclo de desarrollo.",
+      "Demostré capacidades de incorporación rápida al lograr una integración completa en el equipo de desarrollo en 30 días mediante revisión exhaustiva de documentación y contribución proactiva más allá de las responsabilidades de un becario."
     ],
     "technologies" : ["Java", "Spring Boot", "Hibernate", "Oracle SQL", "MongoDB", "Spring Batch","SonarQube", "JUnit", "Mockito"],
     "type": "Prácticas"
@@ -26,9 +26,8 @@
     "startDate": "2022-10",
     "endDate": "2024-03",
     "description": [
-      "Reduje el tiempo del ciclo de cumplimiento de pedidos en un 70% al diseñar y desplegar una aplicación CRM personalizada de extremo a extremo y un configurador de productos usando backend en Java Spring Boot y frontend en React, automatizando la generación de presupuestos, procesamiento de pedidos y flujos de trabajo de fabricación para más de 500 transacciones mensuales.",
-      "Reduje los costes de infraestructura en un 40% y mejoré la escalabilidad del sistema al migrar las aplicaciones web y servidores de dominio a la infraestructura en la nube de AWS.",
-      "Aumenté la generación de leads en un 150% al rediseñar la UI/UX del sitio web de la empresa e implementar las mejores prácticas de SEO usando frameworks modernos de JavaScript (React + Vite, Astro, Next.js), mejorando la velocidad de carga de página en un 60% y el posicionamiento en buscadores para más de 20 términos clave."
+      "Reduje el tiempo del ciclo de cumplimiento de pedidos en un 90% mediante la arquitectura y despliegue de una aplicación CRM personalizada end-to-end y configurador de productos usando backend en Java Spring Boot y frontend en React, automatizando la generación de presupuestos, procesamiento de pedidos y flujos de trabajo de fabricación.",
+      "Reduje los costes de infraestructura en un 40% y mejoré la escalabilidad del sistema al migrar las aplicaciones web y servidores de dominio a la infraestructura en la nube de AWS."
     ],
     "technologies" : ["Java", "Spring Boot", "PostgreSQL", "Redis", "AWS", "Docker", "Linux", "HTML", "CSS", "JavaScript", "TypeScript", "React"],
     "type": "Jornada parcial"
@@ -42,7 +41,11 @@
     "location": "Madrid, España",
     "startDate": "2025-11",
     "endDate": "present",
-    "description": [],
+    "description": [
+      "Ejecuté la migración a microservicios desde una aplicación monolítica legacy, refactorizando servicios backend en Java y componentes frontend en React hacia una arquitectura distribuida, manteniendo el 100% de paridad funcional en una aplicación de alto tráfico que sirve 25.000 peticiones por minuto.",
+      "Colaboré de forma transversal en un entorno Agile/Scrum con equipos de desarrollo, product owners e ingenieros de QA para cumplir los compromisos de sprint y mantener pipelines de integración continua/despliegue continuo (CI/CD).",
+      "Realicé análisis de causa raíz y resolví problemas críticos de producción en un código base de escala empresarial, mejorando la fiabilidad del sistema."
+    ],
     "technologies" : ["Java", "Spring Boot", "JavaScript", "React"],
     "type": "Jornada completa"
   }
